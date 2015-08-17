@@ -1,0 +1,18 @@
+--- a/panel.c	2012-01-03 20:00:29.000000000 +0200
++++ b/panel.c	2012-02-08 01:29:59.368097577 +0200
+@@ -300,6 +300,7 @@ panel_start_gui(panel *p)
+ 
+     /************************/
+     /* Window Mapping Point */
++    gdk_window_set_override_redirect(p->topgwin->window, TRUE);
+     gtk_widget_show_all(p->topgwin);
+     Xclimsg(p->topxwin, a_NET_WM_DESKTOP, 0xFFFFFFFF, 0, 0, 0, 0);
+ 
+@@ -361,6 +362,7 @@ panel_start(panel *p)
+     if (!tray_constructor(p))
+         RET(0);
+ 
++    gdk_window_set_override_redirect(p->topgwin->window, TRUE);
+     gtk_widget_show_all(p->topgwin);
+     RET(1);
+ }
